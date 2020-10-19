@@ -1,0 +1,31 @@
+#windstream_examples {
+	padding-top: 5px;
+}
+
+.login_header {
+    font-weight: bold;
+    float:left;
+    padding-bottom: 10px;
+}
+
+.login_header_example {
+    display: inline-block;
+    padding-bottom: 5px;
+    text-align: left;
+    width: 100%;
+}
+
+.examples {
+    display: inline-block;
+    width: 100%;
+    margin: 5px;
+}
+
+#left {
+    float: left;
+    width: 55%;
+}
+
+#right {
+    text-align: left;
+}
